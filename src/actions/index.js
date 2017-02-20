@@ -1,27 +1,21 @@
 export const CREATE_CLIENT = 'CREATE_CLIENT';
 export const FETCH_ClIENTS = 'FETCH_CLIENTS';
+export const UPDATE_CLIENT = 'UPDATE_CLIENT';
+export const CREATE_HUNDRED_CLIENTS = 'CREATE_HUNDRED_CLIENTS';
 
-let idNum = 0;
+import { v4 } from 'node-uuid';
+
 
 export function createClient() {
   let newClient = {
-    id: idNum++,
+    id: v4(),
     name: '',
     description: '',
-    phoneNum: '',
-    date: new Date(),
-    timezone: (new Date()).getTimezoneOffset()/60,
+    phone: '',
+    date: '',
+    timezone: 'Europe/Riga',
     adult: false
   }
-  // let clientData = {
-    // id: 1,
-    // name: 'Ihnat',
-    // description: 'What to by bicle',
-    // phoneNum: +375295454545,
-    // date: new Date(),
-    // timezone: +2,
-    // adult: true
-  // }
 
   return {
     type: CREATE_CLIENT,
@@ -29,10 +23,36 @@ export function createClient() {
   }
 }
 
+export function createHundredClients() {
+  let dummyList = [];
+  for (let i = 0; i < 100; i++) {
+    dummyList.push({
+      id: v4(),
+      name: '',
+      description: '',
+      phone: '',
+      date: '',
+      timezone: 'Europe/Riga',
+      adult: false
+    });
+  }
+  return {
+    type: CREATE_HUNDRED_CLIENTS,
+    payload: dummyList
+  }
+}
+
 export function fetchClients() {
-  let clients = localStorage.getItem('clients') || [];
+  let clients = [];
   return {
     type: FETCH_ClIENTS,
     payload: clients
+  }
+}
+
+export function updateClient(client) {
+  return {
+    type: UPDATE_CLIENT,
+    payload: client
   }
 }

@@ -1,27 +1,18 @@
 import React, { Component } from 'react';
-import ClientRow from './ClientRow';
+import ClientItem from './ClientItem';
+import Infinite from 'react-infinite';
+
 
 class ClientList extends Component {
   renderList() {
-    return this.props.clients.map((client) => <ClientRow key={client.id} client={client}/>);
+    return this.props.clients.map((client) => <ClientItem key={client.id} client={client}/>);
   }
   render() {
     return (
-      <table  className="client-list">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>description</th>
-            <th>phone number</th>
-            <th>date</th>
-            <th>timezone</th>
-            <th>adult</th>
-          </tr>
-        </thead>
-        <tbody>
+        <Infinite  className="client-list row" useWindowAsScrollContainer={true} elementHeight={280}>
           {this.renderList()}
-        </tbody>
-      </table>
+        </Infinite>
+
     );
   }
 }
