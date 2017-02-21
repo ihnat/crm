@@ -13,5 +13,12 @@
   height: 280px;
   border: 1px solid black;
   padding: 10px;
+}
 
+.timezone-picker {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  z-index: 100;
+  background: #fff;
 }

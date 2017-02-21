@@ -5,7 +5,9 @@ import { updateClient } from '../actions/index';
 
 
 import { Col, Form, FormGroup, ControlLabel, FormControl, Checkbox } from 'react-bootstrap';
-import TimezonePicker from 'react-timezone';
+
+import TimezonePicker from 'react-bootstrap-timezone-picker';
+import 'react-bootstrap-timezone-picker/dist/react-bootstrap-timezone-picker.min.css';
 
 
 class ClientItem extends Component {
@@ -39,10 +41,10 @@ class ClientItem extends Component {
       <div className="client-item col-md-8">
         <Form horizontal>
           <FormGroup>
-            <Col componentClass={ControlLabel} sm={4}>
+            <Col componentClass={ControlLabel} xs={4}>
               Email
             </Col>
-            <Col sm={8}>
+            <Col xs={8}>
               <FormControl
                 name="name"
                 value={this.state.name}
@@ -54,7 +56,7 @@ class ClientItem extends Component {
           </FormGroup>
 
           <FormGroup>
-            <Col componentClass={ControlLabel} sm={4}>
+            <Col componentClass={ControlLabel} xs={4}>
               Description
             </Col>
             <Col sm={8}>
@@ -69,7 +71,7 @@ class ClientItem extends Component {
           </FormGroup>
 
           <FormGroup>
-            <Col componentClass={ControlLabel} sm={4}>
+            <Col componentClass={ControlLabel} xs={4}>
               Phone
             </Col>
             <Col sm={8}>
@@ -83,26 +85,23 @@ class ClientItem extends Component {
             </Col>
           </FormGroup>
           <FormGroup>
-            <Col componentClass={ControlLabel} sm={4}>
+            <Col componentClass={ControlLabel} xs={4}>
               timezone
             </Col>
-            <Col sm={8}>
+            <Col xs={8}>
               <TimezonePicker
-                name="timezone"
-                value={this.state.timezone}
-                onChange={timezone => this.handleChange(timezone)}
-                inputProps={{
-                  placeholder: 'Select Timezone...',
-                  name: 'timezone',
-                }}
+                absolute      = {false}
+                defaultValue  = "Europe/Riga"
+                placeholder   = "Select timezone..."
+                onChange      = {this.handleChange}
               />
             </Col>
           </FormGroup>
           <FormGroup>
-            <Col componentClass={ControlLabel} sm={4}>
+            <Col componentClass={ControlLabel} xs={4}>
               Adult
             </Col>
-            <Col sm={8}>
+            <Col xs={8}>
               <Checkbox
                 name="adult"
                 checked={this.state.adult}

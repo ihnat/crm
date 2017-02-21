@@ -7,9 +7,12 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "install": "^0.8.7",
     "node-uuid": "^1.4.7",
+    "npm": "^4.2.0",
     "react": "^15.4.2",
     "react-bootstrap": "^0.30.7",
+    "react-bootstrap-timezone-picker": "^1.0.10",
     "react-dom": "^15.4.2",
     "react-infinite": "^0.10.0",
     "react-redux": "^5.0.2",
