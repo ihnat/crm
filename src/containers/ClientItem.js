@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateClient } from '../actions/index';
 
-
 import { Col, Form, FormGroup, ControlLabel, FormControl, Checkbox } from 'react-bootstrap';
 
 import TimezonePicker from 'react-bootstrap-timezone-picker';
@@ -53,7 +52,6 @@ class ClientItem extends Component {
               />
             </Col>
           </FormGroup>
-
           <FormGroup>
             <Col componentClass={ControlLabel} xs={4}>
               Description
@@ -89,10 +87,10 @@ class ClientItem extends Component {
             </Col>
             <Col xs={8}>
               <TimezonePicker
-                absolute = {false}
-                value = {this.state.timezone}
-                placeholder = "Select timezone..."
-                onChange = {this.handleChange}
+                absolute={false}
+                value={this.state.timezone}
+                placeholder="Select timezone..."
+                onChange={this.handleChange}
               />
             </Col>
           </FormGroup>
@@ -108,7 +106,6 @@ class ClientItem extends Component {
               />
             </Col>
           </FormGroup>
-
         </Form>
       </div>
     );
