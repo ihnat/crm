@@ -21,20 +21,19 @@ class ClientItem extends Component {
   updateClient() {
     this.props.updateClient(this.state);
   }
-  handleTimezone(e) {
-
+  componentDidUpdate() {
+    this.updateClient();
   }
   handleChange(e) {
     let object = {};
     if (typeof e === 'string') {
-      object.timezone = e;
+      object['timezone'] = e;
     } else if (e.target.name === 'adult') {
-      object.adult = e.target.checked;
+      object['adult'] = e.target.checked;
     } else {
       object[e.target.name] = e.target.value;
     }
-    this.setState({...this.state, ...object});
-    this.updateClient();
+    this.setState(Object.assign({}, this.state, object));
   }
   render() {
     return (
@@ -59,7 +58,7 @@ class ClientItem extends Component {
             <Col componentClass={ControlLabel} xs={4}>
               Description
             </Col>
-            <Col sm={8}>
+            <Col xs={8}>
               <FormControl
                 name="description"
                 value={this.state.description}
@@ -74,7 +73,7 @@ class ClientItem extends Component {
             <Col componentClass={ControlLabel} xs={4}>
               Phone
             </Col>
-            <Col sm={8}>
+            <Col xs={8}>
               <FormControl
                 name="phone"
                 value={this.state.phone}
@@ -90,10 +89,10 @@ class ClientItem extends Component {
             </Col>
             <Col xs={8}>
               <TimezonePicker
-                absolute      = {false}
-                defaultValue  = "Europe/Riga"
-                placeholder   = "Select timezone..."
-                onChange      = {this.handleChange}
+                absolute = {false}
+                value = {this.state.timezone}
+                placeholder = "Select timezone..."
+                onChange = {this.handleChange}
               />
             </Col>
           </FormGroup>
