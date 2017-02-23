@@ -24,10 +24,9 @@ class App extends Component {
     return (
       <div className="App">
         <Header>
-          <Button bsStyle="primary" onClick={this.addClient}>Add Member</Button>
-          <Button onClick={this.addHundred}>Add 100 members</Button>
+          <Button bsStyle="primary" onClick={this.addClient}>Add client</Button>
+          <Button onClick={this.addHundred}>Add 100 clients</Button>
         </Header>
-
         <ClientList clients={this.props.clients}/>
       </div>
     );

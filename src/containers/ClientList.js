@@ -5,7 +5,7 @@ import Infinite from 'react-infinite';
 
 class ClientList extends Component {
   renderList() {
-    return this.props.clients.map((client) => <ClientItem key={client.id} client={client}/>);
+    return this.props.clients.map((client, i) => <ClientItem key={client.id} index={i} client={client}/>);
   }
   render() {
     return (

@@ -3,17 +3,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateClient } from '../actions/index';
 
-import { Col, Form, FormGroup, ControlLabel, FormControl, Checkbox } from 'react-bootstrap';
 
+import FormBlock from '../components/FormBlock.js';
+import { Col, Form, FormControl, Checkbox } from 'react-bootstrap';
 import TimezonePicker from 'react-bootstrap-timezone-picker';
 import 'react-bootstrap-timezone-picker/dist/react-bootstrap-timezone-picker.min.css';
-
 
 class ClientItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ...props.client
+      ...props.client,
+      index: props.index + 1
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -37,75 +38,48 @@ class ClientItem extends Component {
   render() {
     return (
       <div className="client-item col-md-8">
+        <div className="client-item__id">
+          {this.state.index}
+        </div>
         <Form horizontal>
-          <FormGroup>
-            <Col componentClass={ControlLabel} xs={4}>
-              Email
-            </Col>
-            <Col xs={8}>
-              <FormControl
-                name="name"
-                value={this.state.name}
-                onChange={this.handleChange}
-                type="text"
-                placeholder="Jane Doe"
-              />
-            </Col>
-          </FormGroup>
-          <FormGroup>
-            <Col componentClass={ControlLabel} xs={4}>
-              Description
-            </Col>
-            <Col xs={8}>
-              <FormControl
-                name="description"
-                value={this.state.description}
-                onChange={this.handleChange}
-                type="text"
-                placeholder="Need something..."
-              />
-            </Col>
-          </FormGroup>
-
-          <FormGroup>
-            <Col componentClass={ControlLabel} xs={4}>
-              Phone
-            </Col>
-            <Col xs={8}>
-              <FormControl
-                name="phone"
-                value={this.state.phone}
-                onChange={this.handleChange}
-                type="text"
-                placeholder="+48"
-              />
-            </Col>
-          </FormGroup>
-          <FormGroup>
-            <Col componentClass={ControlLabel} xs={4}>
-              timezone
-            </Col>
-            <Col xs={8}>
-              <TimezonePicker
-                absolute={false}
-                value={this.state.timezone}
-                placeholder="Select timezone..."
-                onChange={this.handleChange}
-              />
-            </Col>
-          </FormGroup>
-          <FormGroup>
-            <Col componentClass={ControlLabel} xs={4}>
-              Adult
-            </Col>
-            <Col xs={8}>
-              <Checkbox
-                name="adult"
-                checked={this.state.adult}
-                onChange={this.handleChange}
-              />
-            </Col>
-          </FormGroup>
+          <FormBlock
+            element={FormControl}
+            name="name"
+            value={this.state.name}
+            onChange={this.handleChange}
+            type="text"
+            placeholder="Pedro Radriges"
+          />
+          <FormBlock
+            element={FormControl}
+            name="description"
+            value={this.state.description}
+            onChange={this.handleChange}
+            type="text"
+            placeholder="Need something..."
+          />
+          <FormBlock
+            element={FormControl}
+            name="phone"
+            value={this.state.phone}
+            onChange={this.handleChange}
+            type="text"
+            placeholder="+48 4545454"
+          />
+          <FormBlock
+            element={TimezonePicker}
+            name="timezone"
+            value={this.state.timezone}
+            onChange={this.handleChange}
+            type="text"
+            placeholder="Select timezone..."
+          />
+          <FormBlock
+            element={Checkbox}
+            name="adult"
+            value={this.state.adult}
+            onChange={this.handleChange}
+          />
         </Form>
       </div>
     );
