@@ -10,7 +10,6 @@ export default class FormBlock extends Component {
       return { name, value, onChange};
     })(this.props);
 
-    // this.props.element && (inputProps.element = this.props.element);
     this.props.type && (inputProps.type = this.props.type);
     this.props.placeholder && (inputProps.placeholder = this.props.placeholder);
 

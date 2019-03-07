@@ -9,10 +9,11 @@ class ClientList extends Component {
   }
   render() {
     return (
+      <div className="container-fluid">
         <Infinite  className="client-list row" useWindowAsScrollContainer={true} elementHeight={280}>
           {this.renderList()}
         </Infinite>
-
+      </div>
     );
   }
 }
